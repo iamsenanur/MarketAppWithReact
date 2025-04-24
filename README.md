@@ -1,6 +1,6 @@
 # 🛒 MarketAppWithReact
 
-React + ASP.NET Core kullanılarak geliştirilen fullstack bir e-ticaret uygulamasıdır.
+React + ASP.NET Core kullanarak Nesneye Yönelik Programlama prensipleriyle geliştirmekte olduğum fullstack bir e-ticaret uygulamasıdır.
 
 ## 🚀 Özellikler
 
