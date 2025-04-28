@@ -39,17 +39,19 @@ function SideBar() {
 
   return (
     <div
-      style={{
-        width: "220px",
-        height: "100vh",
-        backgroundColor: "#388E3C",
-        color: "white",
-        padding: "1.5rem 1rem",
-        boxSizing: "border-box",
-        fontSize: "1.1rem",
-        position: "relative"
-      }}
-    >
+    style={{
+      width: "220px",
+      backgroundColor: "#388E3C",
+      color: "white",
+      padding: "1.5rem 1rem",
+      boxSizing: "border-box",
+      fontSize: "1.1rem",
+      position: "relative",
+      display: "flex",
+      flexDirection: "column"
+    }}
+  >
+  
       <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
         <SideBarItem icon={<FaHome />} text="AnaSayfa" to="/" />
 
