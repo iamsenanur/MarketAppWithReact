@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import { FaPlus, FaEdit, FaRegTimesCircle, FaTrash } from "react-icons/fa";
+
 
 const AdminYonetimi = () => {
   const [kullanicilar, setKullanicilar] = useState([]);
@@ -132,11 +134,6 @@ const AdminYonetimi = () => {
         />
       </div>
 
-      {/* Açıklama */}
-      <p style={{ marginBottom: "1.5rem", color: "#666" }}>
-        Burada admin listesi, admin ekleme, silme ve düzenleme işlemleri olacak.
-      </p>
-
       {/* Admin Kartları */}
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {filteredKullanicilar.map((kullanici) => (
@@ -160,7 +157,7 @@ const AdminYonetimi = () => {
               <button
                 onClick={() => handleEditClick(kullanici)}
                 style={{
-                  padding: "0.5rem 1.5rem",
+                  padding: "0.5rem 1rem",
                   borderRadius: "5px",
                   border: "none",
                   backgroundColor: "#4CAF50",
@@ -168,12 +165,12 @@ const AdminYonetimi = () => {
                   cursor: "pointer"
                 }}
               >
-                Düzenle
+                Düzenle<FaEdit />
               </button>
               <button
                 onClick={() => handleDeleteClick(kullanici.id)}
                 style={{
-                  padding: "0.5rem 1.5rem",
+                  padding: "0.5rem 1rem",
                   borderRadius: "5px",
                   border: "none",
                   backgroundColor: "#f44336",
@@ -181,7 +178,7 @@ const AdminYonetimi = () => {
                   cursor: "pointer"
                 }}
               >
-                Sil
+                Sil <FaTrash />
               </button>
             </div>
           </div>

@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { FaPlus, FaTrash } from "react-icons/fa";
 
 const KategoriYonetimi = () => {
   const [aktifKategoriler, setAktifKategoriler] = useState([]);
   const [pasifKategoriler, setPasifKategoriler] = useState([]);
+  const [yeniKategoriModal, setYeniKategoriModal] = useState(false);
+  const [yeniKategoriAdi, setYeniKategoriAdi] = useState('');
 
   useEffect(() => {
+    fetchKategoriler();
+  }, []);
+
+  const fetchKategoriler = () => {
     axios.get('https://localhost:7264/api/admin/aktifkategoriler')
       .then(res => setAktifKategoriler(res.data))
       .catch(err => console.error("Aktif kategori çekilemedi:", err));
@@ -13,11 +20,68 @@ const KategoriYonetimi = () => {
     axios.get('https://localhost:7264/api/admin/pasifkategoriler')
       .then(res => setPasifKategoriler(res.data))
       .catch(err => console.error("Pasif kategori çekilemedi:", err));
-  }, []);
+  };
+
+  const handleKategoriSil = async (id) => {
+    if (window.confirm("Bu kategoriyi silmek istediğinize emin misiniz?")) {
+      try {
+        const token = localStorage.getItem("token");
+        await axios.delete(`https://localhost:7264/api/admin/KategoriDelete?id=${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        alert("Kategori başarıyla silindi!");
+        fetchKategoriler();
+      } catch (error) {
+        console.error("Kategori silme hatası:", error);
+        alert("Kategori silinemedi.");
+      }
+    }
+  };
+
+  const handleKategoriEkle = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.post('https://localhost:7264/api/admin/KategoriAdd', {
+        kategoriAdi: yeniKategoriAdi
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      alert("Kategori başarıyla eklendi!");
+      fetchKategoriler();
+      setYeniKategoriModal(false);
+      setYeniKategoriAdi('');
+    } catch (error) {
+      console.error("Kategori ekleme hatası:", error);
+      alert("Kategori eklenemedi.");
+    }
+  };
 
   return (
     <div style={sayfaStil}>
-      <h2 style={baslikStil}>Kategori Yönetimi</h2>
+      {/* Başlık ve Ekle Butonu */}
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+        <h2 style={baslikStil}>Kategori Yönetimi</h2>
+        <button
+          onClick={() => setYeniKategoriModal(true)}
+          title="Kategori Ekle"
+          style={{
+            padding: "0.3rem 0.6rem",
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "36px",
+            width: "36px"
+          }}
+        >
+          <FaPlus size={18} />
+        </button>
+      </div>
 
       <div style={kategoriAlanWrapper}>
         {/* Aktif Kategoriler */}
@@ -31,6 +95,23 @@ const KategoriYonetimi = () => {
                 <div key={k.kategoriID} style={kutuStil("#d4edda")}>
                   <h4 style={kutuBaslik}>{k.kategoriAdi}</h4>
                   <p style={kutuParagraf}>ID: {k.kategoriID}</p>
+                  <button
+                    onClick={() => handleKategoriSil(k.kategoriID)}
+                    style={{
+                      marginTop: "0.5rem",
+                      backgroundColor: "#f44336",
+                      color: "white",
+                      border: "none",
+                      padding: "0.4rem 0.8rem",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.3rem"
+                    }}
+                  >
+                    <FaTrash /> Sil
+                  </button>
                 </div>
               ))
             )}
@@ -54,11 +135,45 @@ const KategoriYonetimi = () => {
           </div>
         </div>
       </div>
+
+      {/* Yeni Kategori Ekle Modalı */}
+      {yeniKategoriModal && (
+        <div style={{
+          position: "fixed",
+          top: "20%",
+          left: "50%",
+          transform: "translate(-50%, -20%)",
+          backgroundColor: "white",
+          padding: "2rem",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+          zIndex: 1000,
+          borderRadius: "10px",
+          width: "300px"
+        }}>
+          <h3>Yeni Kategori Ekle</h3>
+
+          <input
+            type="text"
+            placeholder="Kategori Adı"
+            value={yeniKategoriAdi}
+            onChange={(e) => setYeniKategoriAdi(e.target.value)}
+            style={{ width: "100%", marginBottom: "1rem", padding: "0.5rem" }}
+          />
+
+          <button onClick={handleKategoriEkle} style={{ backgroundColor: "#388E3C", color: "white", border: "none", padding: "0.5rem 1rem", borderRadius: "5px", cursor: "pointer", width: "100%" }}>
+            Kaydet
+          </button>
+
+          <button onClick={() => setYeniKategoriModal(false)} style={{ marginTop: "0.5rem", backgroundColor: "#ccc", border: "none", padding: "0.5rem 1rem", borderRadius: "5px", cursor: "pointer", width: "100%" }}>
+            İptal
+          </button>
+        </div>
+      )}
     </div>
   );
 };
 
-// 🎨 STİL NESNELERİ
+// 🎨 STİLLER
 const sayfaStil = {
   padding: '2rem',
   backgroundColor: '#f4f6f8',
@@ -69,7 +184,7 @@ const baslikStil = {
   fontSize: '2rem',
   textAlign: 'center',
   color: '#2a2f5b',
-  marginBottom: '2rem',
+  margin: 0,
 };
 
 const kategoriAlanWrapper = {

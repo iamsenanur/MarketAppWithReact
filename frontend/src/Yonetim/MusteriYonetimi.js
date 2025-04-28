@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaEdit, FaRegTimesCircle, FaTrash  } from "react-icons/fa";
+
 
 
 const MusteriYonetimi = () => {
@@ -175,7 +176,7 @@ const MusteriYonetimi = () => {
               <button
                 onClick={() => handleEditClick(kullanici)}
                 style={{
-                  padding: "0.5rem 1.5rem",
+                  padding: "0.6rem 1rem",
                   borderRadius: "5px",
                   border: "none",
                   backgroundColor: "#4CAF50",
@@ -183,12 +184,12 @@ const MusteriYonetimi = () => {
                   cursor: "pointer"
                 }}
               >
-                Düzenle
+                Düzenle <FaEdit />
               </button>
               <button
                 onClick={() => handleDeleteClick(kullanici.id)}
                 style={{
-                  padding: "0.5rem 1.5rem",
+                  padding: "0.6rem 1rem",
                   borderRadius: "5px",
                   border: "none",
                   backgroundColor: "#f44336",
@@ -196,7 +197,7 @@ const MusteriYonetimi = () => {
                   cursor: "pointer"
                 }}
               >
-                Sil
+                Sil <FaTrash />
               </button>
             </div>
           </div>
