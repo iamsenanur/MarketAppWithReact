@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import UrunKartiforMusteriPage from './Components/UrunKarti'
 
 const UrunListesi = () => {
   const [urunler, setUrunler] = useState([])
@@ -46,22 +47,9 @@ const UrunListesi = () => {
       {/* Ürün kartları */}
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {filteredUrunler.map((urun) => (
-          <div
-            key={urun.urunID}
-            style={{
-              borderRadius: "10px",
-              margin: "1rem",
-              padding: "1rem",
-              width: "220px",
-              backgroundColor: "white",
-              color: "#333",
-              boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
-            }}
-          >
-            <h3>{urun.urunAdi}</h3>
-            <p>ID: {urun.urunID}</p>
-            <p>Kategori ID: {urun.urunKategoriID}</p>
-          </div>
+        <UrunKartiforMusteriPage
+        key={urun.urunID}
+        urun={urun} />
         ))}
       </div>
     </div>
