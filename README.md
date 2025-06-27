@@ -9,6 +9,30 @@ React + ASP.NET Core kullanarak Nesneye Yönelik Programlama prensipleriyle geli
 - Sepet işlemleri ve sipariş yönetimi
 - Simülasyon tabanlı ödeme sistemi
 - Admin paneli üzerinden kategori, sipariş ve kullanıcı kontrolü
+  
+## 🖼️ Ekran Görüntüleri
+
+### 🔐 Giriş Sayfası  
+![Login Sayfası](./loginSayfasi.png)
+
+### 🛒 Müşteri Paneli ve Sepet Yönetimi  
+![Müşteri Paneli](./musteriPanelSepetYonetimi.png)
+
+### 📦 Ürün Yönetimi  
+![Ürün Yönetimi](./urunYonetimi.png)
+
+### 📋 Ürün Listesi  
+![Ürün Listesi](./urunListesi.png)
+
+### 🛠️ Admin Yönetimi  
+![Admin Yönetimi](./adminYonetimi.png)
+
+### 👤 Müşteri Yönetimi  
+![Müşteri Yönetimi](./musteriYonetimi.png)
+
+### 🗂️ Kategori Yönetimi  
+![Kategori Yönetimi](./kategoriYonetimi.png)
+
 
 ## ⚙️ Teknolojiler
 
