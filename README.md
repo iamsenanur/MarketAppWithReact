@@ -4,11 +4,15 @@ React + ASP.NET Core kullanarak Nesneye Yönelik Programlama prensipleriyle geli
 
 ## 🚀 Özellikler
 
-- JWT ile kullanıcı girişi ve rol yönetimi (Admin & Müşteri)
-- Ürün listeleme, arama ve admin tarafından ürün yönetimi
-- Sepet işlemleri ve sipariş yönetimi
-- Simülasyon tabanlı ödeme sistemi
-- Admin paneli üzerinden kategori, sipariş ve kullanıcı kontrolü
+- JWT ile kullanıcı girişi ve rol bazlı yetkilendirme (Admin & Müşteri)
+- 🔐 Giriş sonrası kullanıcı rolüne göre ayrı panellere yönlendirme:
+  - **Müşteri Paneli**: Ürünleri listeleme, arama, sepete ekleme ve sipariş oluşturma
+  - **Admin Paneli**: Ürün, kategori, müşteri ve admin yönetimi (CRUD işlemleri)
+- 📦 Ürün listeleme ve kategori bazlı filtreleme
+- 🛒 Sepet yönetimi ve sipariş takibi
+- 💳 Simülasyon tabanlı ödeme sistemi
+- 📊 Yönetim panelinden kullanıcı, sipariş ve kategori kontrolü
+
   
 ## 🖼️ Ekran Görüntüleri
 
