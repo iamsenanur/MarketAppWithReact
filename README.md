@@ -19,7 +19,7 @@ React + ASP.NET Core kullanarak Nesneye Yönelik Programlama prensipleriyle geli
 ![Müşteri Paneli](./musteriPanelSepetYonetimi.png)
 
 ### 📦 Ürün Yönetimi  
-![Ürün Yönetimi](./urunYonetimi.png)
+![Ürün Yönetimi](./urunYoetimi.png)
 
 ### 📋 Ürün Listesi  
 ![Ürün Listesi](./urunListesi.png)
@@ -31,7 +31,7 @@ React + ASP.NET Core kullanarak Nesneye Yönelik Programlama prensipleriyle geli
 ![Müşteri Yönetimi](./musteriYonetimi.png)
 
 ### 🗂️ Kategori Yönetimi  
-![Kategori Yönetimi](./kategoriYonetimi.png)
+![Kategori Yönetimi](./kategoriYonetimii.png)
 
 
 ## ⚙️ Teknolojiler
